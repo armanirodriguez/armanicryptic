@@ -11,7 +11,12 @@
   body { margin:0; background:var(--bg); color:var(--fg); font-family: system-ui, -apple-system, sans-serif; display:flex; justify-content:center; padding:32px 16px; }
   main { width:100%; max-width:440px; text-align:center; }
   h1 { font-family: Georgia, serif; font-size:28px; margin:0 0 4px; }
-  .sub { color:var(--muted); font-size:14px; margin-bottom:28px; }
+  h1 { margin-bottom:12px; }
+  details { margin-bottom:14px; }
+  summary { cursor:pointer; color:var(--muted); font-size:14px; margin-bottom:10px; list-style:none; }
+  summary::-webkit-details-marker { display:none; }
+  summary::after { content:" ▾"; }
+  details[open] summary::after { content:" ▴"; }
   .clue { font-family: Georgia, serif; font-size:22px; line-height:1.4; margin-bottom:24px; }
   .clue mark { background:none; color:inherit; padding:0; }
   .clue mark.ind { text-decoration: underline wavy var(--accent); }
@@ -35,16 +40,18 @@
 <body>
 <main>
   <h1>Armani Cryptic</h1>
-  <div class="sub">#1 · one clue, as fast as you can</div>
   <div class="timer" id="timer">0:00</div>
   <div class="clue">Chris gets <mark id="ind">news of</mark> <mark id="fod">change, how unfortunate Devon</mark> (4)</div>
   <div class="boxes" id="boxes"></div>
-  <div class="row" id="hints">
-    <button id="hInd">Indicator</button>
-    <button id="hFod">Fodder</button>
-    <button id="hLet">Letter</button>
-  </div>
   <div class="row"><button class="primary" id="check">Check</button></div>
+  <details>
+    <summary>Hints</summary>
+    <div class="row" id="hints">
+      <button id="hInd">Indicator</button>
+      <button id="hFod">Fodder</button>
+      <button id="hLet">Letter</button>
+    </div>
+  </details>
   <div class="msg" id="msg"></div>
   <div id="done"><button class="primary" id="share">Share</button></div>
 </main>
